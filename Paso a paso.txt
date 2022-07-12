@@ -1,0 +1,6 @@
+STORE
+ACTIONS
+REDUCERS
+
+REACT-ROUTER    (index, nav, app)
+CREACION DE COMPONENTES (css modules, styled components)
