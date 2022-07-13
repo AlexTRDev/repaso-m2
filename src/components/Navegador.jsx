@@ -12,8 +12,10 @@ function Navegador(){
                <li>
                   <Link to="/character/create"> create character</Link>
                </li>
-
-               {/* link para ver los episodios */}
+               <li>
+                  <Link to="/episodios"> episodes </Link>
+               </li>
+                                 {/* link para ver los episodios */}
             </ul>
          </nav>
       </>
