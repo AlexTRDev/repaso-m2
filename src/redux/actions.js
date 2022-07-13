@@ -9,10 +9,10 @@ const DELETE_CHARACTER = "DELETE_CHARACTER"
 const getCharacters = () => ( dispatch ) => {
   return fetch(`https://rickandmortyapi.com/api/character`)
     .then((res) => res.json())
-    .then((res) => dispatch({ type: GET_CHARACTERS, payload: res }));
+    .then(({results}) => dispatch({ type: GET_CHARACTERS, payload: results }));
 };
 
-
+// { info: """", results:[] }
 //https://rickandmortyapi.com/api/character/2
 // CRUD => CREATE- READ - UPADATE - DELETE
 
