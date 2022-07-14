@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react'
-import { connect } from 'react-redux/es/exports'
-import { useDispatch } from 'react-redux/'
-import { getCharacters } from "../redux/actions"
+import React from 'react'
+import { useSelector } from 'react-redux'
+import styled from 'styled-components'
+import CharacterCard from './CharacterCard'
 
+// import { connect } from 'react-redux/es/exports'
 
 //useSelector => estadoglobal
 // const personajes = useSelector((state) => state.characters) // MapStateToProps
@@ -10,42 +11,49 @@ import { getCharacters } from "../redux/actions"
 // useEfect // ciclo de vida del componente
 // useState // estado local de las variables
 
-function Characters( props ) {
-  const dispatch = useDispatch()
-  const [data, setData] = useState([])
-  
-  useEffect(()=>{
-    getCharacters()(dispatch)
-    setData( props.personajes )
-  },[data])
+function Characters() {
+  const data = useSelector( (state) => state.characters )
 
   return (
       <>
         <h1> Personajes </h1>
+        <CharactersContainer>
         {
           data && 
-          data.map( (personaje) => {
-            return (
-              <div key={personaje.id}>
-                <h1>{personaje.name}</h1>
-                <h3>{personaje.species}</h3>
-                <img src={personaje.image} alt={personaje.name} />
-              </div>
-            )
-          })
+          data.map( (personaje) => <CharacterCard key={personaje.id} {...personaje}/>)
         }
+        </CharactersContainer>
       </>
     )
   }
+
+const CharactersContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+
+`
+
+export default Characters
   
-const mapStateToProps = ( state ) => {
-  return {
-    personajes: state.characters
-  }
-}
 
 
-export default connect(mapStateToProps, )(Characters);
+
+
+
+
+
+// ------------------------------------------------------------------
+// const mapStateToProps = ( state ) => {
+//   return {
+//     personajes: state.characters
+//   }
+// }
+
+
+// export default connect(mapStateToProps, )(Characters);
   
 // export default Characters
 

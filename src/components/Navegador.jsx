@@ -15,7 +15,7 @@ function Navegador(){
                <li>
                   <Link to="/episodios"> episodes </Link>
                </li>
-                                 {/* link para ver los episodios */}
+                  {/* link para ver los episodios */}
             </ul>
          </nav>
       </>
